@@ -1,3 +1,5 @@
+process.on("unhandledRejection", console.error);
+process.on("uncaughtException", console.error);
 // 1. 주요 클래스 가져오기
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 // const { TOKEN } = require('./config.json');
@@ -51,6 +53,6 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 
 // 5. 시크릿키(토큰)을 통해 봇 로그인 실행
 
-client.login(process.env.TOKEN).catch(err => {
-  console.error("Login failed:", err);
-});
+client.login(process.env.TOKEN)
+  .then(() => console.log("Discord login success"))
+  .catch(err => console.error("Login failed:", err));
