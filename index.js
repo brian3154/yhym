@@ -1,5 +1,10 @@
 process.on("unhandledRejection", console.error);
 process.on("uncaughtException", console.error);
+
+console.log("TOKEN exists?", !!process.env.TOKEN);
+
+process.on("unhandledRejection", console.error);
+process.on("uncaughtException", console.error);
 // 1. 주요 클래스 가져오기
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 // const { TOKEN } = require('./config.json');
@@ -56,3 +61,4 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 client.login(process.env.TOKEN)
   .then(() => console.log("Discord login success"))
   .catch(err => console.error("Login failed:", err));
+
