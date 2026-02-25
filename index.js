@@ -57,9 +57,13 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 });
 
 // 5. 시크릿키(토큰)을 통해 봇 로그인 실행
+console.log("Trying to login...");
 
 client.login(process.env.TOKEN)
   .then(() => console.log("Discord login success"))
   .catch(err => console.error("Login failed:", err));
 
+client.on("ready", () => {
+  console.log("READY EVENT FIRED");
+});
 
