@@ -2,6 +2,17 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 // const { TOKEN } = require('./config.json');
 
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Web server running');
+});
+
 // 2. 클라이언트 객체 생성 (Guilds관련, 메시지관련 인텐트 추가)
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds, 
@@ -39,4 +50,5 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 });
 
 // 5. 시크릿키(토큰)을 통해 봇 로그인 실행
+
 client.login(process.env.TOKEN);
